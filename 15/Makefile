@@ -1,7 +1,7 @@
 CC  = g++
 CXX = g++
 
-INCLUDES = -I../
+INCLUDES = -I../utils
 
 CFLAGS   = -g -Wall $(INCLUDES)
 CXXFLAGS = -g -Wall $(INCLUDES)
@@ -17,7 +17,7 @@ default: $(executables)
 
 $(executables): 15.o
 
-$(objects): ../util.h
+$(objects): ../utils/util.h
 
 .PHONY: clean
 clean:
