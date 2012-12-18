@@ -11,6 +11,7 @@ long max(long a, long b){
 
 
 //this could use some testing and support for bignums
+//it's also leaking memory. fix this.
 long choose(long n, long k){
 	long** arr = (long**)malloc(sizeof(long*)*(n+2));
 	long i,j;
