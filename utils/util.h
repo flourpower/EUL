@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 long max(long a, long b){
@@ -34,6 +35,54 @@ long choose(long n, long k){
 	free(arr);
 	return result;
 }
+
+struct longTuple {
+	long fst;
+	long snd;
+};
+
+int isPrime(long n){ //This should get used a lot
+	int i;
+	if(n == 2)
+		return 1;
+	for(i = 2; i < sqrt(n) + 1; i++){
+		if ((n % i) == 0)
+			return 0;
+	}
+	return 1;
+}
+
+long powr(long x, long n){
+	long i;
+	long answer = 1;
+	for(i = 0; i < n;i++ ){
+		answer *= x;
+	}
+	return answer;
+}
+
+void factor(long n, struct longTuple arr[]){
+	//always pass in arr of length 2*n
+	if(n == 1){
+		arr[0].fst = -1;
+		return;
+	}
+	long i,j,k,m;
+	k = 0;
+	for(i = 2; i <= n; i++){
+		if(((n % i) == 0) && isPrime(i)){
+			m = n;
+			for(j = 0; (m % i) == 0; j++){
+				m = m / i;
+			}
+			arr[k].fst = i;
+			arr[k].snd = j;
+			k++;
+		}
+	}
+	arr[k].fst = -1; //so that we know we're done
+}
+
 
 
 
