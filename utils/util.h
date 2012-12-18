@@ -11,7 +11,6 @@ long max(long a, long b){
 
 
 //this could use some testing and support for bignums
-//it's also leaking memory. fix this.
 long choose(long n, long k){
 	long** arr = (long**)malloc(sizeof(long*)*(n+2));
 	long i,j;
@@ -30,7 +29,7 @@ long choose(long n, long k){
 		}
 	}
 	long result = arr[n+1][k+1];
-	for(i = 0; i < n; i++){
+	for(i = 0; i < n+2; i++){
 		free(arr[i]);
 	}
 	free(arr);
