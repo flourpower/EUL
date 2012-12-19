@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-
 long max(long a, long b){
 	if(a < b)
 		return b;
 	return a;
 }
-
 
 //this could use some testing and support for bignums
 long choose(long n, long k){
@@ -83,6 +81,32 @@ void factor(long n, struct longTuple arr[]){
 	arr[k].fst = -1; //so that we know we're done
 }
 
-
+int isPal(long n){//checks if n is a palindrome
+	int digitCount = 0;
+	long m = n;
+	while(m > 9){
+		m = (m - (m % 10)) / 10;
+		digitCount++;
+	}
+	digitCount++;
+	int k = digitCount;
+	int* digits = (int*)malloc(sizeof(int)*digitCount);
+	while(n > 9){
+		digits[digitCount-1] = n % 10;
+		digitCount--;
+		n = (n - (n % 10)) / 10;
+	}
+	digits[digitCount-1] = n % 10;
+	int i;
+	for(i = 0; i < k; i++){
+		if(digits[i] != digits[k-i - 1]){
+			free(digits);
+			return 0;
+		}
+	}
+	free(digits);
+	return 1; 
+	
+}
 
 
