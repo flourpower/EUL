@@ -109,4 +109,18 @@ int isPal(long n){//checks if n is a palindrome
 	
 }
 
+long numDigits(long n){
+	return floor(log10(n) + 1);
+}
+
+long fib_help(long n, long a, long b){
+	if(n == 0)
+		return a;
+	return fib_help(n-1, b, a+b);
+}
+
+long fib(long n){
+	return fib_help(n,0,1);
+}
+
 
