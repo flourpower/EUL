@@ -123,4 +123,16 @@ long fib(long n){
 	return fib_help(n,0,1);
 }
 
+//calculate the order of m mod n
+long order (long m, long n){
+	long i, accum;
+	accum = m; 
+	for(i = 1; i < n+1; i++){
+		if( (accum % n) == 1 ){
+			return i;
+		}
+		accum = (accum % n) * m;
+	}
+	return i;
+}
 
